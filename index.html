@@ -5,18 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./halfmoon.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
     <script src="./index.js"></script>
     <link rel="stylesheet" href="./halfmoon.min.css">
     <title>EL aflæsning</title>
 </head>
-<body onload="loadData()">
+<body onload="load()">
     <div class="card">
-        <input type="number" class="form-control" name="test" placeholder="Hele huset">
-        <input type="number" class="form-control" name="test" placeholder="Første sal">
-        <input type="number" class="form-control" name="test" placeholder="KW pris">
-        <input type="Date" class="form-control" name="test" placeholder="Dato">
-        <button class="btn" onclick="sendToDb()">Insend</button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <input type="number" class="form-control" name="test" placeholder="Hele huset">
+              <input type="number" class="form-control" name="test" placeholder="Første sal">
+              <input type="number" class="form-control" name="test" placeholder="KW pris">
+              <input type="Date" class="form-control" id="inputDate" name="test" placeholder="Dato">
+              <button class="btn btn-primary" onclick="sendToDb()">Insend data</button> <br> <br>
+            </th>
+            <th> <br> <br> <br> <br> <br>
+              <center>
+                <form action="http://localhost:3000/files" enctype="multipart/form-data" method="post">
+                  <div class="form-group"><input type="file" class="form-control-file" name="uploaded_file"> <br>
+                  <input type="submit" value="Indsend xl" class="btn btn-primary"></div>
+                </form>
+              </center>
+            </th>
+            <th> <br> <br> <br>
+              <input type="number" class="form-control year" id="year" name="year" placeholder="År">
+              <button class="btn btn-primary" onclick="getYear()">Hent</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
     </div>
+    <h5 id="totalValue"></h5>
     <table class="table">
         <thead>
           <tr>
@@ -27,11 +52,10 @@
             <th>Første sal</th>
             <th>Første sal forbrug</th>
             <th>Første sal kr.</th>
-            <th>Total pris</th>
           </tr>
         </thead>
         <tbody id="tableBody">
         </tbody>
-      </table>
+    </table>
 </body>
 </html>
