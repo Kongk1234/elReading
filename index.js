@@ -27,7 +27,7 @@ function loadData(year){
     const data = { "json": {
         "year" : parseInt(year)
       }}
-    fetch('http://localhost:3000/year', {  
+    fetch('http://localhost:42069/year', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -129,7 +129,7 @@ function sendToDb(){
         "kw": parseFloat(elementArr[2]),
         "date": elementArr[3]
       }}
-    fetch('http://localhost:3000/things', {  
+    fetch('http://localhost:42069/things', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
