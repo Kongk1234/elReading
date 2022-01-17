@@ -28,14 +28,13 @@ function createGraph() {
                 labels: test,
                 datasets: []
             }
-            let colors = ["red", "green", "blue", "purple", "cyan", "pink", "orange", "yellow"]
             calcData.forEach(element => {
                 console.log(element);
                 if (!element.length == 0) {
                     testjson.datasets.push({
                         label: "",
                         data: element,
-                        borderColor: colors[Math.floor(Math.random() * (colors.length - 1) + 1)],
+                        borderColor: randomColor(),
                         fill: false
                     });
                 }
@@ -61,4 +60,12 @@ function createGraph() {
                 },
             });
         })
-}
+    }
+    
+    let colors = ["red", "green", "blue", "purple", "cyan", "pink", "orange", "yellow"]
+    function randomColor(){
+        let random = Math.floor(Math.random() * (colors.length - 1) + 1)  
+        let color = colors[random]  
+        colors.splice(random, 1)
+        return color;
+    }
