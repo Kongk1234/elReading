@@ -1,5 +1,5 @@
 function createGraph() {
-    fetch('http://localhost:42069/getData', {
+    fetch('https://api.linde-barrith.dk/getData', {
         })
         .then(response => response.json())
         .then(data => {

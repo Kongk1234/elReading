@@ -29,7 +29,7 @@ function loadData(year){
     const data = { "json": {
         "year" : parseInt(year)
       }}
-    fetch('http://localhost:42069/year', {  
+    fetch('https://api.linde-barrith.dk/year', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -133,7 +133,7 @@ function sendToDb(){
         "kw": parseFloat(elementArr[2]),
         "date": elementArr[3]
       }}
-    fetch('http://localhost:42069/things', {  
+    fetch('https://api.linde-barrith.dk/things', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
