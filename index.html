@@ -6,10 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./halfmoon.min.js"></script>
     <script src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <link rel="stylesheet" href="./halfmoon.min.css">
     <title>EL aflæsning</title>
 </head>
 <body onload="load()">
+  <div class="modal modal-full" id="modal-1" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <canvas id="myChart" style="width:100%;max-width:2000px"></canvas>
+
+      </div>
+    </div>
+  </div>
+  <script src="./chart.js"></script>
+  <!-- Page wrapper -->
+<div class="page-wrapper">
+  <!-- Modal toggle inside the content wrapper -->
+  <div class="content-wrapper">
     <div class="card">
       <table class="table">
         <thead>
@@ -23,7 +37,7 @@
             </th>
             <th> <br> <br> <br> <br> <br>
               <center>
-                <form action="https://api.linde-barrith.dk/files" enctype="multipart/form-data" method="post">
+                <form action="http://localhost:42069/files" enctype="multipart/form-data" method="post">
                   <div class="form-group"><input type="file" class="form-control-file" name="uploaded_file"> <br>
                   <input type="submit" value="Indsend xl" class="btn btn-primary"></div>
                 </form>
@@ -36,6 +50,7 @@
           </tr>
         </thead>
       </table>
+      <a href="#modal-1" style="float: right;" class="btn btn-primary" role="button">Åben graf</a> <br>
 
     </div>
     <h5 id="totalValue"></h5>
@@ -54,5 +69,8 @@
         <tbody id="tableBody">
         </tbody>
     </table>
+  </div>
+</div>
+
 </body>
 </html>

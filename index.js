@@ -24,10 +24,12 @@ function addDataLoad(element){
 }
 
 function loadData(year){
+    let dataArr = [];
+    let indexArr = [];
     const data = { "json": {
         "year" : parseInt(year)
       }}
-    fetch('https://api.linde-barrith.dk/year', {  
+    fetch('http://localhost:42069/year', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -75,6 +77,8 @@ function loadData(year){
                     let tfval = element.elHouse - data[index+1].elHouse 
                     totalf.innerHTML = parseFloat(tfin.toFixed(2)) + " KW/H"   
                     totalf.value = parseFloat(tfval.toFixed(2)) 
+                    console.log(index);
+                    dataArr.push(totalf.value)
                 }
             }
             let tkr = totalf.value * element.kw;
@@ -110,9 +114,9 @@ function loadData(year){
 
             let totalValue = document.getElementById("totalValue")
             totalValue.innerHTML = "Total pris: "+ parseFloat(totalprice.toFixed(2)) + " kr.";
+            indexArr.push(index)
         }
-
-        
+        createGraph();
     })
 }
 
@@ -129,7 +133,7 @@ function sendToDb(){
         "kw": parseFloat(elementArr[2]),
         "date": elementArr[3]
       }}
-    fetch('https://api.linde-barrith.dk/things', {  
+    fetch('http://localhost:42069/things', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
