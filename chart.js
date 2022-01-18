@@ -22,14 +22,12 @@ function createGraph() {
                 calcData.push(temp)
 
             }
-            console.log(calcData.length);
-            let test = Array.from(Array(calcData[0].length).keys());
+            let test = Array.from(Array(52).keys());
             let testjson = {
                 labels: test,
                 datasets: []
             }
             calcData.forEach(element => {
-                console.log(element);
                 if (!element.length == 0) {
                     testjson.datasets.push({
                         label: "",
@@ -40,9 +38,8 @@ function createGraph() {
                 }
             });
             for (let index = 0; index < data.time.length; index++) {
-                testjson.datasets[index].label = data.time[index]              
+                testjson.datasets[index].label =  data.time[index]              
             }
-            console.log(testjson);
             new Chart("myChart", {
                 type: "line",
                 data: testjson,
@@ -64,8 +61,7 @@ function createGraph() {
     
     let colors = ["red", "green", "blue", "purple", "cyan", "pink", "orange", "yellow"]
     function randomColor(){
-        let random = Math.floor(Math.random() * (colors.length - 1) + 1)  
-        let color = colors[random]  
-        colors.splice(random, 1)
+        let color = colors[0]  
+        colors.splice(0, 1)
         return color;
     }
