@@ -50,7 +50,7 @@ function loadData(year){
     const data = { "json": {
         "year" : parseInt(year)
       }}
-    fetch('http://localhost:42069/year', {  
+    fetch('https://api.linde-barrith.dk/year', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
