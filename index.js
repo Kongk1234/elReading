@@ -29,7 +29,6 @@ function closeModal() {
 }
 
 const deleteRow = function() {
-    console.log(this.id);
     const data = { "json": {
         "row" : parseInt(this.id)
         }}
