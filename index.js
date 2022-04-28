@@ -23,13 +23,34 @@ function addDataLoad(element){
     });
 }
 
+function closeModal() {
+    window.location.replace("https://el.linde-barrith.dk")
+    load();
+}
+
+const deleteRow = function() {
+    console.log(this.id);
+    const data = { "json": {
+        "row" : parseInt(this.id)
+        }}
+    fetch('https://api.linde-barrith.dk/delete', {  
+        method: 'delete',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+    })
+    .then()
+    setTimeout(() => {
+        load();        
+    }, 100);
+  }
+
 function loadData(year){
     let dataArr = [];
     let indexArr = [];
     const data = { "json": {
         "year" : parseInt(year)
       }}
-    fetch('https://api.linde-barrith.dk/year', {  
+    fetch('http://localhost:42069/year', {  
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -48,13 +69,18 @@ function loadData(year){
             let dates = document.createElement("th");
             let elhouse = document.createElement("th");
             let totalf = document.createElement("th");
-            let totalkr = document.createElement("th");
-    
+            let totalkr = document.createElement("th");    
     
             let elfirst = document.createElement("th");
             let firstf = document.createElement("th");
             let firstkr = document.createElement("th");
-    
+            
+            let deletee = document.createElement("button");
+            deletee.innerHTML = " x "
+            deletee.style.backgroundColor = "red"
+            deletee.className = "btn"
+
+
             let dateValue = element.date.slice(0,10);
     
             let newDate = new Date(dateValue)
@@ -62,7 +88,9 @@ function loadData(year){
     
 
             dates.innerHTML = newDateString;
-    
+            deletee.id = element.elHouse
+
+
             elhouse.innerHTML = element.elHouse + " KW/H";
             elhouse.value = element.elHouse;
 
@@ -77,7 +105,6 @@ function loadData(year){
                     let tfval = element.elHouse - data[index+1].elHouse 
                     totalf.innerHTML = parseFloat(tfin.toFixed(2)) + " KW/H"   
                     totalf.value = parseFloat(tfval.toFixed(2)) 
-                    console.log(index);
                     dataArr.push(totalf.value)
                 }
             }
@@ -102,7 +129,9 @@ function loadData(year){
             }
             let fkr = firstf.value * element.kw;
             firstkr.innerHTML = parseFloat(fkr.toFixed(1)) + " kr."
-                
+            
+            deletee.onclick = deleteRow
+
             tr.appendChild(dates)
             tr.appendChild(elhouse)
             tr.appendChild(totalf)
@@ -110,6 +139,7 @@ function loadData(year){
             tr.appendChild(elfirst)
             tr.appendChild(firstf)
             tr.appendChild(firstkr)
+            tr.appendChild(deletee)
             tbody.appendChild(tr);
 
             let totalValue = document.getElementById("totalValue")
