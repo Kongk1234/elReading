@@ -29,9 +29,7 @@ function closeModal() {
 }
 
 const deleteRow = function() {
-    const data = { "json": {
-        "row" : parseInt(this.id)
-        }}
+    const data = { "json": { "row" : parseInt(this.id)}}
     fetch('https://api.linde-barrith.dk/delete', {  
         method: 'delete',
         headers: {'Content-Type': 'application/json'},
@@ -138,6 +136,7 @@ function loadData(year){
             tr.appendChild(elfirst)
             tr.appendChild(firstf)
             tr.appendChild(firstkr)
+            tr.style.textAlign = "center"
             tr.appendChild(deletee)
             tbody.appendChild(tr);
 
