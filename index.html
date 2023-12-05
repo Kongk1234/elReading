@@ -30,9 +30,12 @@
         <thead>
           <tr>
             <th>
-              <input type="number" class="form-control" name="test" placeholder="Hele huset">
-              <input type="number" class="form-control" name="test" placeholder="Første sal">
-              <input type="number" class="form-control" name="test" placeholder="KW pris">
+              <input type="number" class="form-control" name="test" placeholder="Strøm">
+              <input type="number" class="form-control" name="test" placeholder="KW/H pris">
+              <input type="number" class="form-control" name="test" placeholder="Vand">
+              <input type="number" class="form-control" name="test" placeholder="M3 pris">
+              <input type="number" class="form-control" name="test" placeholder="Varme">
+              <input type="number" class="form-control" name="test" placeholder="MW/H pris">
               <input type="Date" class="form-control" id="inputDate" name="test" placeholder="Dato">
               <button class="btn btn-primary" onclick="sendToDb()">Insend data</button> <br> <br>
             </th>
@@ -59,12 +62,15 @@
         <thead>
           <tr>
             <th>Dato</th>
-            <th>Hele huset</th>
-            <th>Total forbrug</th>
-            <th>Total kr.</th>
-            <th>Første sal</th>
-            <th>Første sal forbrug</th>
-            <th>Første sal kr.</th>
+            <th>Strøm</th>
+            <th>Strøm forbrug</th>
+            <th>Strøm kr.</th>
+            <th>Vand</th>
+            <th>Vand forbrug</th>
+            <th>Vand kr.</th>
+            <th>Varme</th>
+            <th>Varme forbrug</th>
+            <th>Varme kr.</th>
             <th style="text-align: center;">Slet række</th>
           </tr>
         </thead>

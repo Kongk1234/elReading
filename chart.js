@@ -1,5 +1,5 @@
 function createGraph() {
-    fetch('https://api.linde-barrith.dk/getData', {
+    fetch('http://localhost:42069/getData', {
         })
         .then(response => response.json())
         .then(data => {
@@ -7,7 +7,7 @@ function createGraph() {
             for (let index = 0; index < data.data.length; index++) {
                 let yearsir = [];
                 data.data[index].forEach(element => {
-                    yearsir.push(element.elHouse)
+                    yearsir.push(element.el)
                 });
                 dataArr.push(yearsir);
             }
@@ -22,7 +22,8 @@ function createGraph() {
                 calcData.push(temp)
 
             }
-            let test = Array.from(Array(52).keys());
+            let test = Array.from(Array(53).keys());
+            test.splice(0,1)
             let testjson = {
                 labels: test,
                 datasets: []
@@ -30,15 +31,19 @@ function createGraph() {
             calcData.forEach(element => {
                 if (!element.length == 0) {
                     testjson.datasets.push({
-                        label: "",
+                        label: "1",
                         data: element,
                         borderColor: randomColor(),
                         fill: false
                     });
                 }
             });
-            for (let index = 0; index < data.time.length; index++) {
-                testjson.datasets[index].label =  data.time[index]              
+            for (let index = 1; index < data.time.length; index++) {
+                if (testjson.datasets[index]) {
+                    testjson.datasets[index].label = data.time[index];
+                } else {
+                    console.error("Dataset not found at index", index);
+                }
             }
             new Chart("myChart", {
                 type: "line",
