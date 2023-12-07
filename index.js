@@ -48,7 +48,7 @@ function loadData(year) {
       year: parseInt(year),
     },
   };
-  fetch("http://localhost:42069/year", {
+  fetch("https://api.linde-barrith.dk/year", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -115,7 +115,6 @@ function loadData(year) {
         elKr.innerHTML = parseFloat(tkr.toFixed(1)) + " KR.";
         totalprice = totalprice + tkr;
 
-
         water.innerHTML = element.water + " M3";
         water.value = element.water;
         waterForbrug.value = 0;
@@ -133,7 +132,6 @@ function loadData(year) {
         let wkr = waterForbrug.value * element.m3;
         waterKr.innerHTML = parseFloat(wkr.toFixed(1)) + " KR.";
         totalprice = totalprice + wkr;
-
 
         heat.innerHTML = element.heat + " M3";
         heat.value = element.heat;
@@ -196,7 +194,7 @@ function sendToDb() {
       date: elementArr[6],
     },
   };
-  fetch("http://localhost:42069/things", {
+  fetch("https://api.linde-barrith.dk/things", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

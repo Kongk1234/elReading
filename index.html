@@ -1,84 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./halfmoon.min.js"></script>
     <script src="./index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <link rel="stylesheet" href="./halfmoon.min.css">
+    <link rel="stylesheet" href="./halfmoon.min.css" />
     <title>EL aflæsning</title>
-</head>
-<body onload="load()">
-  <div class="modal modal-full" id="modal-1" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <button class="btn" onclick="closeModal()"> x </button> <br> <br>
-        <canvas id="myChart" style="width:100%;max-width:2000px"></canvas>
-
+  </head>
+  <body onload="load()">
+    <div class="modal modal-full" id="modal-1" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <button class="btn" onclick="closeModal()">x</button> <br />
+          <br />
+          <canvas id="myChart1" style="width: 100%; max-width: 2000px"></canvas>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="./chart.js"></script>
-  <!-- Page wrapper -->
-<div class="page-wrapper">
-  <!-- Modal toggle inside the content wrapper -->
-  <div class="content-wrapper">
-    <div class="card">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>
-              <input type="number" class="form-control" name="test" placeholder="Strøm">
-              <input type="number" class="form-control" name="test" placeholder="KW/H pris">
-              <input type="number" class="form-control" name="test" placeholder="Vand">
-              <input type="number" class="form-control" name="test" placeholder="M3 pris">
-              <input type="number" class="form-control" name="test" placeholder="Varme">
-              <input type="number" class="form-control" name="test" placeholder="MW/H pris">
-              <input type="Date" class="form-control" id="inputDate" name="test" placeholder="Dato">
-              <button class="btn btn-primary" onclick="sendToDb()">Insend data</button> <br> <br>
-            </th>
-            <th> <br> <br> <br> <br> <br>
-              <center>
-                <form action="https://api.linde-barrith.dk/files" enctype="multipart/form-data" method="post">
-                  <div class="form-group"><input type="file" class="form-control-file" name="uploaded_file"> <br>
-                  <input type="submit" value="Indsend xl" class="btn btn-primary"></div>
-                </form>
-              </center>
-            </th>
-            <th> <br> <br> <br>
-              <input type="number" class="form-control year" id="year" name="year" placeholder="År">
-              <button class="btn btn-primary" onclick="getYear()">Hent</button>
-            </th>
-          </tr>
-        </thead>
-      </table>
-      <a href="#modal-1" style="float: right;" class="btn btn-primary" role="button">Åben graf</a> <br>
 
+    <div class="modal modal-full" id="modal-2" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <button class="btn" onclick="closeModal()">x</button> <br />
+          <br />
+          <canvas id="myChart2" style="width: 100%; max-width: 2000px"></canvas>
+        </div>
+      </div>
     </div>
-    <h5 id="totalValue"></h5>
-    <table class="table">
-        <thead>
-          <tr>
-            <th>Dato</th>
-            <th>Strøm</th>
-            <th>Strøm forbrug</th>
-            <th>Strøm kr.</th>
-            <th>Vand</th>
-            <th>Vand forbrug</th>
-            <th>Vand kr.</th>
-            <th>Varme</th>
-            <th>Varme forbrug</th>
-            <th>Varme kr.</th>
-            <th style="text-align: center;">Slet række</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody">
-        </tbody>
-    </table>
-  </div>
-</div>
 
-</body>
+    <div class="modal modal-full" id="modal-3" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <button class="btn" onclick="closeModal()">x</button> <br />
+          <br />
+          <canvas id="myChart3" style="width: 100%; max-width: 2000px"></canvas>
+        </div>
+      </div>
+    </div>
+    <script src="./chart.js"></script>
+    <!-- Page wrapper -->
+    <div class="page-wrapper">
+      <!-- Modal toggle inside the content wrapper -->
+      <div class="content-wrapper">
+        <div class="card">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="test"
+                    placeholder="Strøm"
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="test"
+                    placeholder="KW/H pris"
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="test"
+                    placeholder="Vand"
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="test"
+                    placeholder="M3 pris"
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="test"
+                    placeholder="Varme"
+                  />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="test"
+                    placeholder="MW/H pris"
+                  />
+                  <input
+                    type="Date"
+                    class="form-control"
+                    id="inputDate"
+                    name="test"
+                    placeholder="Dato"
+                  />
+                  <button class="btn btn-primary" onclick="sendToDb()">
+                    Insend data
+                  </button>
+                  <br />
+                  <br />
+                </th>
+                <th>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <center>
+                    <form
+                      action="https://api.linde-barrith.dk/files"
+                      enctype="multipart/form-data"
+                      method="post"
+                    >
+                      <div class="form-group">
+                        <input
+                          type="file"
+                          class="form-control-file"
+                          name="uploaded_file"
+                        />
+                        <br />
+                        <input
+                          type="submit"
+                          value="Indsend xl"
+                          class="btn btn-primary"
+                        />
+                      </div>
+                    </form>
+                  </center>
+                </th>
+                <th>
+                  <br />
+                  <br />
+                  <br />
+                  <input
+                    type="number"
+                    class="form-control year"
+                    id="year"
+                    name="year"
+                    placeholder="År"
+                  />
+                  <button class="btn btn-primary" onclick="getYear()">
+                    Hent
+                  </button>
+                </th>
+              </tr>
+            </thead>
+          </table>
+          <table style="float: right;">
+            <tr>
+              <td style="padding-right: 1vw;">
+                <a
+                  href="#modal-1"
+                  style="float: right"
+                  class="btn btn-primary"
+                  role="button"
+                  >El graf</a
+                >
+                <br />
+              </td>
+              <td style="padding-right: 1vw;"">
+                <a
+                  href="#modal-2"
+                  style="float: right"
+                  class="btn btn-primary"
+                  role="button"
+                  >Vand graf</a
+                >
+                <br />
+              </td>
+              <td>
+                <a
+                  href="#modal-3"
+                  style="float: right"
+                  class="btn btn-primary"
+                  role="button"
+                  >Varme graf</a
+                >
+                <br />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h5 id="totalValue"></h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Dato</th>
+              <th>Strøm</th>
+              <th>Strøm forbrug</th>
+              <th>Strøm kr.</th>
+              <th>Vand</th>
+              <th>Vand forbrug</th>
+              <th>Vand kr.</th>
+              <th>Varme</th>
+              <th>Varme forbrug</th>
+              <th>Varme kr.</th>
+              <th style="text-align: center">Slet række</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
