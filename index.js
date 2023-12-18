@@ -60,10 +60,11 @@ function loadData(year) {
       while (tbody.firstChild) {
         tbody.removeChild(tbody.lastChild);
       }
-
+      console.log(data);
       for (let index = 0; index < data.length; index++) {
         const element = data[index];
         let tr = document.createElement("tr");
+        let id = document.createElement("th");
         let dates = document.createElement("th");
         let el = document.createElement("th");
         let elForbrug = document.createElement("th");
@@ -82,6 +83,10 @@ function loadData(year) {
         deletee.style.backgroundColor = "red";
         deletee.className = "btn";
 
+
+        let idValue = element.id
+        id.innerHTML = idValue
+
         let dateValue = element.date.slice(0, 10);
 
         let newDate = new Date(dateValue);
@@ -93,7 +98,7 @@ function loadData(year) {
           newDate.toLocaleDateString("en-US", { year: "numeric" });
 
         dates.innerHTML = newDateString;
-        deletee.id = element.el;
+        deletee.id = element.id;
 
         el.innerHTML = element.el + " KW/H";
         el.value = element.el;
@@ -153,6 +158,7 @@ function loadData(year) {
 
         deletee.onclick = deleteRow;
 
+        tr.appendChild(id);
         tr.appendChild(dates);
         tr.appendChild(el);
         tr.appendChild(elForbrug);
