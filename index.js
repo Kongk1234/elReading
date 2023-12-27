@@ -60,7 +60,6 @@ function loadData(year) {
       while (tbody.firstChild) {
         tbody.removeChild(tbody.lastChild);
       }
-      console.log(data);
       for (let index = 0; index < data.length; index++) {
         const element = data[index];
         let tr = document.createElement("tr");
@@ -188,7 +187,6 @@ function sendToDb() {
   inputs.forEach((element) => {
     elementArr.push(element.value);
   });
-  console.log(elementArr);
   const data = {
     json: {
       el: parseFloat(elementArr[0]),
@@ -207,7 +205,12 @@ function sendToDb() {
   }).then();
   setTimeout(() => {
     load();
-  }, 100);
+  }, 200);
+  for (let index = 0; index < document.getElementsByClassName('form-control').length; index++) {
+    const element = document.getElementsByClassName('form-control')[index];
+    element.value = ""
+    element.innerHTML = ""
+  }
 }
 
 function getYear() {

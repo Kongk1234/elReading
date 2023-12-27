@@ -46,7 +46,7 @@ function createGraph() {
       };
       if (!calcData.el.length == 0) {
         elJson.datasets.push({
-          label: "KW/H",
+          label: "KW/h",
           data: calcData.el,
           borderColor: randomColor(),
           fill: false,
@@ -58,13 +58,12 @@ function createGraph() {
           fill: false,
         });
         heatJson.datasets.push({
-          label: "MW/H",
+          label: "MW/h",
           data: calcData.heat,
           borderColor: randomColor(),
           fill: false,
         });
       }
-      console.log(elJson);
       new Chart("myChart1", {
         type: "line",
         data: elJson,

@@ -16,6 +16,9 @@
         <div class="modal-content">
           <button class="btn" onclick="closeModal()">x</button> <br />
           <br />
+          <center>
+            <h5>Strøm</h5>
+          </center>
           <canvas id="myChart1" style="width: 100%; max-width: 2000px"></canvas>
         </div>
       </div>
@@ -26,6 +29,9 @@
         <div class="modal-content">
           <button class="btn" onclick="closeModal()">x</button> <br />
           <br />
+          <center>
+            <h5>Vand</h5>
+          </center>
           <canvas id="myChart2" style="width: 100%; max-width: 2000px"></canvas>
         </div>
       </div>
@@ -36,6 +42,9 @@
         <div class="modal-content">
           <button class="btn" onclick="closeModal()">x</button> <br />
           <br />
+          <center>
+            <h5>Varme</h5>
+          </center>
           <canvas id="myChart3" style="width: 100%; max-width: 2000px"></canvas>
         </div>
       </div>
@@ -50,49 +59,101 @@
             <thead>
               <tr>
                 <th>
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="test"
-                    placeholder="Strøm"
-                  />
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="test"
-                    placeholder="KW/H pris"
-                  />
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="test"
-                    placeholder="Vand"
-                  />
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="test"
-                    placeholder="M3 pris"
-                  />
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="test"
-                    placeholder="Varme"
-                  />
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="test"
-                    placeholder="MW/H pris"
-                  />
-                  <input
-                    type="Date"
-                    class="form-control"
-                    id="inputDate"
-                    name="test"
-                    placeholder="Dato"
-                  />
+                  <table>
+                    <tr>
+                      <th>
+                        Strøm
+                      </th>
+                      <th>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="test"
+                        />
+                      </th>
+                      <th>KW/h</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        KW/h pris
+                      </th>
+                      <th>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="test"
+                        />
+                      </th>
+                      <th>Kr.</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        Vand
+                      </th>
+                      <th>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="test"
+                        />
+                      </th>
+                      <th>M3</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        M3 pris
+                      </th>
+                      <th>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="test"
+                        />
+                      </th>
+                      <th>Kr.</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        Varme
+                      </th>
+                      <th>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="test"
+                        />
+                      </th>
+                      <th>
+                        MW/h 
+                      </th>
+                    </tr>
+                    <tr>
+                      <th>
+                        MW/h pris
+                      </th>
+                      <th>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="test"
+                        />
+                      </th>
+                      <th>Kr.</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        Dato
+                      </th>
+                      <th>
+                        <input
+                          type="Date"
+                          class="form-control"
+                          id="inputDate"
+                          name="test"
+                        />
+                      </th>
+                    </tr>
+                  </table>
                   <button class="btn btn-primary" onclick="sendToDb()">
                     Insend data
                   </button>
