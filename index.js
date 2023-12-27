@@ -208,8 +208,10 @@ function sendToDb() {
   }, 200);
   for (let index = 0; index < document.getElementsByClassName('form-control').length; index++) {
     const element = document.getElementsByClassName('form-control')[index];
-    element.value = ""
-    element.innerHTML = ""
+    if (index == 0 || index == 2 || index == 4) {
+      element.value = ""
+      element.innerHTML = "" 
+    }
   }
 }
 
