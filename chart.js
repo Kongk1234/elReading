@@ -46,19 +46,19 @@ function createGraph() {
       };
       if (!calcData.el.length == 0) {
         elJson.datasets.push({
-          label: "KW/h",
+          label: "kWh",
           data: calcData.el,
           borderColor: randomColor(),
           fill: false,
         });
         waterJson.datasets.push({
-          label: "M3",
+          label: "m3",
           data: calcData.water,  
           borderColor: randomColor(),
           fill: false,
         });
         heatJson.datasets.push({
-          label: "MW/h",
+          label: "MWh",
           data: calcData.heat,
           borderColor: randomColor(),
           fill: false,

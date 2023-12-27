@@ -99,60 +99,60 @@ function loadData(year) {
         dates.innerHTML = newDateString;
         deletee.id = element.id;
 
-        el.innerHTML = element.el + " KW/H";
+        el.innerHTML = element.el + " kWH";
         el.value = element.el;
 
         elForbrug.value = 0;
         if (index < data.length) {
           if (index == data.length - 1) {
-            elForbrug.innerHTML = 0 + " KW/H";
+            elForbrug.innerHTML = 0 + " kWh";
             elForbrug.value = 0;
           } else {
             let tfin = element.el - data[index + 1].el;
             let tfval = element.el - data[index + 1].el;
-            elForbrug.innerHTML = parseFloat(tfin.toFixed(2)) + " KW/H";
+            elForbrug.innerHTML = parseFloat(tfin.toFixed(2)) + " kWh";
             elForbrug.value = parseFloat(tfval.toFixed(2));
             dataArr.push(elForbrug.value);
           }
         }
         let tkr = elForbrug.value * element.kwh;
-        elKr.innerHTML = parseFloat(tkr.toFixed(1)) + " KR.";
+        elKr.innerHTML = parseFloat(tkr.toFixed(1)) + " Kr.";
         totalprice = totalprice + tkr;
 
-        water.innerHTML = element.water + " M3";
+        water.innerHTML = element.water + " m3";
         water.value = element.water;
         waterForbrug.value = 0;
         if (index < data.length) {
           if (index == data.length - 1) {
-            waterForbrug.innerHTML = 0 + " M3";
+            waterForbrug.innerHTML = 0 + " m3";
             waterForbrug.value = 0;
           } else {
             let ffin = element.water - data[index + 1].water;
             let ffval = element.water - data[index + 1].water;
-            waterForbrug.innerHTML = parseFloat(ffin.toFixed(2)) + " M3";
+            waterForbrug.innerHTML = parseFloat(ffin.toFixed(2)) + " m3";
             waterForbrug.value = parseFloat(ffval.toFixed(2));
           }
         }
         let wkr = waterForbrug.value * element.m3;
-        waterKr.innerHTML = parseFloat(wkr.toFixed(1)) + " KR.";
+        waterKr.innerHTML = parseFloat(wkr.toFixed(1)) + " Kr.";
         totalprice = totalprice + wkr;
 
-        heat.innerHTML = element.heat + " M3";
+        heat.innerHTML = element.heat + " Mwh";
         heat.value = element.heat;
         heatForbrug.value = 0;
         if (index < data.length) {
           if (index == data.length - 1) {
-            heatForbrug.innerHTML = 0 + " M3";
+            heatForbrug.innerHTML = 0 + " Mwh";
             heatForbrug.value = 0;
           } else {
             let ffin = element.heat - data[index + 1].heat;
             let ffval = element.heat - data[index + 1].heat;
-            heatForbrug.innerHTML = parseFloat(ffin.toFixed(2)) + " MW/H";
+            heatForbrug.innerHTML = parseFloat(ffin.toFixed(2)) + " MwH";
             heatForbrug.value = parseFloat(ffval.toFixed(2));
           }
         }
         let hkr = waterForbrug.value * element.mwh;
-        heatKr.innerHTML = parseFloat(hkr.toFixed(1)) + " KR.";
+        heatKr.innerHTML = parseFloat(hkr.toFixed(1)) + " Kr.";
         totalprice = totalprice + hkr;
 
         deletee.onclick = deleteRow;
@@ -174,7 +174,7 @@ function loadData(year) {
 
         let totalValue = document.getElementById("totalValue");
         totalValue.innerHTML =
-          "Total pris: " + parseFloat(totalprice.toFixed(2)) + " kr.";
+          "Total pris: " + parseFloat(totalprice.toFixed(2)) + " Kr.";
         indexArr.push(index);
       }
       createGraph();
